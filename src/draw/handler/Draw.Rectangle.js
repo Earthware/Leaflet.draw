@@ -1,3 +1,4 @@
+/*global $:false */
 L.Draw.Rectangle = L.Draw.SimpleShape.extend({
 	statics: {
 		TYPE: 'rectangle'
@@ -27,6 +28,7 @@ L.Draw.Rectangle = L.Draw.SimpleShape.extend({
 
 	_drawShape: function (latlng) {
 		if (!this._shape) {
+			this.options.shapeOptions.color = $(".sp-preview-inner").css("background-color");
 			this._shape = new L.Rectangle(new L.LatLngBounds(this._startLatLng, latlng), this.options.shapeOptions);
 			this._map.addLayer(this._shape);
 		} else {
@@ -35,6 +37,7 @@ L.Draw.Rectangle = L.Draw.SimpleShape.extend({
 	},
 
 	_fireCreatedEvent: function () {
+		this.options.shapeOptions.color = $(".sp-preview-inner").css("background-color");
 		var rectangle = new L.Rectangle(this._shape.getBounds(), this.options.shapeOptions);
 		L.Draw.SimpleShape.prototype._fireCreatedEvent.call(this, rectangle);
 	}

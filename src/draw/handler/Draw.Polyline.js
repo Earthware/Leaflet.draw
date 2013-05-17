@@ -1,3 +1,4 @@
+/*global $:false */
 L.Draw.Polyline = L.Draw.Feature.extend({
 	statics: {
 		TYPE: 'polyline'
@@ -48,6 +49,7 @@ L.Draw.Polyline = L.Draw.Feature.extend({
 			this._markerGroup = new L.LayerGroup();
 			this._map.addLayer(this._markerGroup);
 
+			this.options.shapeOptions.color = $(".sp-preview-inner").css("background-color");
 			this._poly = new L.Polyline([], this.options.shapeOptions);
 
 			this._tooltip.updateContent(this._getTooltipText());

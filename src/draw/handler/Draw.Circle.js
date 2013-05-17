@@ -1,3 +1,4 @@
+/*global $:false */
 L.Draw.Circle = L.Draw.SimpleShape.extend({
 	statics: {
 		TYPE: 'circle'
@@ -27,6 +28,7 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 
 	_drawShape: function (latlng) {
 		if (!this._shape) {
+			this.options.shapeOptions.color = $(".sp-preview-inner").css("background-color");
 			this._shape = new L.Circle(this._startLatLng, this._startLatLng.distanceTo(latlng), this.options.shapeOptions);
 			this._map.addLayer(this._shape);
 		} else {

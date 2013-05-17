@@ -1,3 +1,4 @@
+/*global $:false */
 L.Draw = {};
 
 L.Draw.Feature = L.Handler.extend({
@@ -11,6 +12,7 @@ L.Draw.Feature = L.Handler.extend({
 
 		// Merge default shapeOptions options with custom shapeOptions
 		if (options && options.shapeOptions) {
+			this.options.shapeOptions.color = $(".sp-preview-inner").css("background-color");
 			options.shapeOptions = L.Util.extend({}, this.options.shapeOptions, options.shapeOptions);
 		}
 		L.Util.extend(this.options, options);
